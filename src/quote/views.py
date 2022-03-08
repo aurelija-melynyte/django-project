@@ -1,8 +1,5 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-
-from .models import Quote
 from .serializers import QuoteSerializer
 
 
@@ -12,21 +9,13 @@ class QuoteViewSet(APIView):
         parameter = self.request.query_params
         return parameter
 
-    def get(self, request):
+    def get(self):
         queryset = self.get_queryset()
         return Response(queryset)
 
-    def post(self, request):
+    def post(self):
         queryset = self.get_queryset()
         serializer = QuoteSerializer(data=queryset)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
-
-
-
-
-
-
-
-
