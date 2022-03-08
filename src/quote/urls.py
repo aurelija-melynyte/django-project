@@ -4,5 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    path('quota',  views.QuotaViewSet.as_view()),
+    path('quote',  views.QuoteViewSet.as_view()),
 ]

@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Quota
+from .models import Quote
 
 
-class QuotaSerializer(serializers.ModelSerializer):
+class QuoteSerializer(serializers.ModelSerializer):
     """class that will manage serialization and deserialization from JSON."""
     class Meta:
         """
@@ -10,5 +10,5 @@ class QuotaSerializer(serializers.ModelSerializer):
         model - the model for Serializer
         fields - a tuple of field names to be included in the serialization
         """
-        model = Quota
+        model = Quote
         fields = ('id', 'currency')

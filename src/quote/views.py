@@ -2,11 +2,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Quota
-from .serializers import QuotaSerializer
+from .models import Quote
+from .serializers import QuoteSerializer
 
 
-class QuotaViewSet(APIView):
+class QuoteViewSet(APIView):
 
     def get_queryset(self):
         parameter = self.request.query_params
@@ -18,7 +18,7 @@ class QuotaViewSet(APIView):
 
     def post(self, request):
         queryset = self.get_queryset()
-        serializer = QuotaSerializer(data=queryset)
+        serializer = QuoteSerializer(data=queryset)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)

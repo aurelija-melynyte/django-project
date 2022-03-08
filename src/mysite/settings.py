@@ -31,9 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 # here you add your apps
 INSTALLED_APPS = [
-    'corsheaders',
     'rest_framework',
-    'quota.apps.QuotaConfig',
+    'quote.apps.QuoteConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
