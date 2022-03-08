@@ -14,13 +14,16 @@ class QuoteViewSet(APIView):
         parameter = self.request.query_params
         return parameter
 
-    def get(self):
+    def get(self, request):
         queryset = self.get_queryset()
         return Response(queryset)
 
-    def post(self):
+    def post(self, request):
         queryset = self.get_queryset()
         serializer = QuoteSerializer(data=queryset)
+        # without validating the data, you can not write the data into the Database. The raise_exception argument
+        # will raise the exception if there are validation errors
         if serializer.is_valid(raise_exception=True):
+            # call .save() to return an object instance, based on the validated data.
             serializer.save()
             return Response(serializer.data)
