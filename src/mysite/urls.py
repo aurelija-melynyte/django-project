@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# the empty string '' matches the base URL (http://localhost:8000/)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),

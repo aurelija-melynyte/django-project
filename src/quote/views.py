@@ -2,6 +2,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import QuoteSerializer
 
+"""
+A view function takes in information from a request, prepares the data needed to generate a page, and then sends
+the data back to the browser, often by using a template that defines what the page will look like.
+"""
+
 
 class QuoteViewSet(APIView):
 
