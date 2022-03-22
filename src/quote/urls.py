@@ -8,5 +8,5 @@ view and the view function retrieves and processes the data needed for that page
 """
 
 urlpatterns = [
-    path('quote',  views.QuoteViewSet.as_view()),
+    path('quote', views.QuoteViewSet.as_view()),
 ]

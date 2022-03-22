@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Quote(models.Model):
-    currency = models.CharField(max_length=60, blank=False, default='')
-
-
+    base_currency = models.CharField(blank=False, default="", max_length=3)
+    quote_currency = models.CharField(blank=False, default="", max_length=3)
+    base_amount = models.IntegerField(blank=False, default=0)
+    calculated_amount = models.FloatField(blank=False, default=0)

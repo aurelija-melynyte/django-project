@@ -1,6 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from .serializers import QuoteSerializer
+from .service import QuoteService
+from .validator import Validator
 
 """
 A view function takes in information from a request, prepares the data needed to generate a page, and then sends
@@ -11,12 +14,20 @@ the data back to the browser, often by using a template that defines what the pa
 class QuoteViewSet(APIView):
 
     def get_queryset(self):
-        parameter = self.request.query_params
-        return parameter
+        params = self.request.query_params   # QueryDict in response
+        return params
 
     def get(self, request):
         queryset = self.get_queryset()
-        return Response(queryset)
+        quote_service = QuoteService(queryset)
+        validator = Validator(queryset)
+        try:
+            validator.is_valid_get_query_params()
+        except Exception as e:
+            return Response('%s' % e.args[0], status=status.HTTP_400_BAD_REQUEST)
+        exchange_amount = quote_service.get_exchange_amount()
+
+        return Response({"get_exchange_amount": exchange_amount})
 
     def post(self, request):
         queryset = self.get_queryset()

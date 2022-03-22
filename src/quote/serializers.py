@@ -3,7 +3,7 @@ from .models import Quote
 
 """Serializers in Django REST Framework are responsible for converting objects into data types understandable
 by javascript and front-end frameworks. The two major serializers that are most popularly used are ModelSerializer
-and HyperLinkedModelSerialzer."""
+and HyperLinkedModelSerializer."""
 
 
 class QuoteSerializer(serializers.ModelSerializer):
@@ -22,4 +22,4 @@ class QuoteSerializer(serializers.ModelSerializer):
         fields - a tuple of field names to be included in the serialization
         """
         model = Quote
-        fields = ('id', 'currency')
+        fields = ('base_currency', 'quote_currency', 'base_amount', 'calculated_amount')
